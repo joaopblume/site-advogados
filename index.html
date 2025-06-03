@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gonzatto Advogados Associados</title>
+    <title>Lacerda e Martins Advogados Associados</title>
     <style>
         * {
             margin: 0;
@@ -14,20 +14,21 @@
         body {
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
+            color: #e8e8e8;
+            background-color: #0a0a0a;
         }
 
         /* Header */
         .header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: white;
             padding: 20px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
         }
 
         .container {
@@ -47,6 +48,10 @@
             font-weight: bold;
             color: white;
             text-decoration: none;
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-links {
@@ -59,41 +64,130 @@
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
-            color: #ffd700;
+            color: #d4af37;
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 120px 0 80px;
-            text-align: center;
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Carousel Section */
+        .carousel-container {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
             margin-top: 80px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.8) 100%);
+            z-index: 1;
+        }
+
+        /* Definindo as imagens do carrossel com fallback */
+        .carousel-slide:nth-child(1) {
+            background-image: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('images/carrossel/carrossel1.jpg');
+            background-color: #1a1a1a;
+        }
+
+        .carousel-slide:nth-child(2) {
+            background-image: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('images/carrossel/carrossel2.jpg');
+            background-color: #1a1a1a;
+        }
+
+        .carousel-slide:nth-child(3) {
+            background-image: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('images/carrossel/carrossel3.jpg');
+            background-color: #1a1a1a;
+        }
+
+        .carousel-content {
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            transform: translateY(-50%);
+            z-index: 10;
+            max-width: 600px;
+            color: white;
+        }
+
+        .carousel-content h1 {
+            font-size: 4rem;
             margin-bottom: 20px;
             font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            background: linear-gradient(45deg, #ffffff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .hero p {
+        .carousel-content .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #d4af37;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .carousel-content p {
             font-size: 1.3rem;
             margin-bottom: 30px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.9;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            line-height: 1.8;
         }
 
         .cta-button {
-            background: #ffd700;
-            color: #1e3c72;
-            padding: 15px 35px;
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
+            color: #000;
+            padding: 18px 40px;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
@@ -102,35 +196,103 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
         }
 
         .cta-button:hover {
-            background: #ffed4e;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+            background: linear-gradient(45deg, #f4d03f, #d4af37);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.5);
         }
 
-        /* Services Section */
+        /* Carousel Navigation */
+        .carousel-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: #d4af37;
+            transform: scale(1.3);
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(212, 175, 55, 0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-arrow.prev {
+            left: 30px;
+        }
+
+        .carousel-arrow.next {
+            right: 30px;
+        }
+
+        /* Services Section - Corrigido */
         .services {
-            padding: 80px 0;
-            background: white;
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            position: relative;
+            z-index: 100;
+            min-height: 100vh;
+        }
+
+        .services .container {
+            position: relative;
+            z-index: 101;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 20px;
-            color: #1e3c72;
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 60px;
-            color: #666;
+            font-size: 1.3rem;
+            margin-bottom: 80px;
+            color: #b0b0b0;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.8;
         }
 
         .services-grid {
@@ -141,100 +303,417 @@
         }
 
         .service-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 4px solid #1e3c72;
+            transition: all 0.4s ease;
+            border: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            border-color: #d4af37;
         }
 
         .service-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2rem;
-            color: white;
+            margin: 0 auto 30px;
+            font-size: 2.5rem;
+            color: #000;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #1e3c72;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: #d4af37;
+            font-weight: 600;
         }
 
         .service-card p {
-            color: #666;
+            color: #b0b0b0;
             line-height: 1.8;
+            font-size: 1rem;
         }
 
         /* Team Section */
         .team {
-            padding: 80px 0;
-            background: #f8f9fa;
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
         }
 
         .team-card {
-            background: white;
-            border-radius: 15px;
+            background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            transition: all 0.4s ease;
+            border: 1px solid #333;
         }
 
         .team-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            border-color: #d4af37;
         }
 
         .team-photo {
             width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            height: 250px;
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 3rem;
+            color: #000;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(0,0,0,0.1), transparent);
         }
 
         .team-info {
-            padding: 30px;
+            padding: 40px;
         }
 
         .team-info h3 {
-            font-size: 1.3rem;
-            color: #1e3c72;
+            font-size: 1.5rem;
+            color: #d4af37;
             margin-bottom: 10px;
+            font-weight: 600;
         }
 
         .team-info .role {
-            color: #ffd700;
+            color: #f4d03f;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .team-info .oab {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            font-style: italic;
         }
 
         .team-info p {
-            color: #666;
-            font-size: 0.9rem;
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Articles Section */
+        .articles {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .article-card {
+            background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+            padding: 40px;
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            border: 1px solid #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .article-card:hover::before {
+            left: 100%;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: #d4af37;
+        }
+
+        .article-icon {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            color: #d4af37;
+        }
+
+        .article-card h3 {
+            color: #d4af37;
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .article-card p {
+            color: #b0b0b0;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .read-more {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .read-more:hover {
+            color: #f4d03f;
+        }
+
+        .read-more::after {
+            content: ' →';
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover::after {
+            transform: translateX(5px);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .contact-item {
+            text-align: center;
+            background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+            padding: 50px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border: 1px solid #333;
+            transition: all 0.4s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            border-color: #d4af37;
+        }
+
+        .contact-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            color: #d4af37;
+        }
+
+        .contact-item h3 {
+            color: #d4af37;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .contact-item p {
+            color: #b0b0b0;
             line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: white;
+            padding: 60px 0 30px;
+            border-top: 1px solid #333;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer h3, .footer h4 {
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .footer-tagline {
+            color: #d4af37;
+            font-style: italic;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #d4af37;
+        }
+
+        .footer-contact p {
+            color: #b0b0b0;
+            margin-bottom: 8px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+            color: #888;
+        }
+
+        /* Mobile Responsiveness - Corrigido */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .carousel-container {
+                height: 80vh;
+            }
+
+            .carousel-slide {
+                background-attachment: scroll;
+            }
+
+            .carousel-content {
+                left: 20px;
+                right: 20px;
+                max-width: none;
+                padding: 20px;
+            }
+
+            .carousel-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .carousel-content p {
+                font-size: 1.1rem;
+            }
+
+            .services-grid,
+            .team-grid,
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .carousel-arrow {
+                display: none;
+            }
+
+            .service-card,
+            .team-card,
+            .article-card,
+            .contact-item {
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #d4af37, #f4d03f);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #f4d03f, #d4af37);
         }
     </style>
 </head>
@@ -243,7 +722,7 @@
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <a href="#" class="logo">Gonzatto Advogados</a>
+                <a href="#" class="logo">Lacerda e Martins</a>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#servicos">Serviços</a></li>
@@ -255,47 +734,86 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>Gonzatto Advogados Associados</h1>
-            <p>Atendimento presencial e virtual, personalizado e com agilidade para clientes de qualquer estado do País.</p>
-            <a href="#contato" class="cta-button">
-                Saiba Mais
-                <span>→</span>
-            </a>
+    <!-- Carousel Section -->
+    <section class="carousel-container" id="home">
+        <div class="carousel">
+            <div class="carousel-slide active">
+                <div class="carousel-content">
+                    <div class="tagline">Trabalhando pelo trabalhador</div>
+                    <h1>Lacerda e Martins</h1>
+                    <p>Advocacia especializada em Direito do Trabalho e Previdenciário com atendimento personalizado e dedicação total aos seus direitos.</p>
+                    <a href="#contato" class="cta-button">
+                        Consulte-nos
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <div class="tagline">Trabalhando pelo trabalhador</div>
+                    <h1>Experiência e Dedicação</h1>
+                    <p>Anos de experiência defendendo os direitos dos trabalhadores com estratégias personalizadas e resultados efetivos.</p>
+                    <a href="#servicos" class="cta-button">
+                        Nossos Serviços
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="carousel-slide">
+                <div class="carousel-content">
+                    <div class="tagline">Trabalhando pelo trabalhador</div>
+                    <h1>Conquiste seus Direitos</h1>
+                    <p>Especialistas em casos complexos de direito trabalhista e previdenciário. Sua vitória é nossa missão.</p>
+                    <a href="#equipe" class="cta-button">
+                        Conheça Nossa Equipe
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation -->
+        <button class="carousel-arrow prev">‹</button>
+        <button class="carousel-arrow next">›</button>
+        
+        <div class="carousel-nav">
+            <div class="carousel-dot active" data-slide="0"></div>
+            <div class="carousel-dot" data-slide="1"></div>
+            <div class="carousel-dot" data-slide="2"></div>
         </div>
     </section>
 
     <!-- Services Section -->
     <section class="services" id="servicos">
         <div class="container">
-            <h2 class="section-title">Nossos Serviços</h2>
-            <p class="section-subtitle">O escritório é especializado no atendimento a pessoas físicas, de forma personalizada, mediante consultas prestadas pelos advogados sócios do escritório, com presteza e facilidade de acesso.</p>
+            <h2 class="section-title">Áreas de Atuação</h2>
+            <p class="section-subtitle">Especialização em Direito do Trabalho e Previdenciário com foco na defesa dos direitos dos trabalhadores e na conquista dos benefícios previdenciários.</p>
             
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">⚖️</div>
-                    <h3>Planejamento Previdenciário</h3>
-                    <p>Estudo minucioso com a finalidade de verificar a melhor estratégia com relação à aposentadoria e outros eventuais benefícios previdenciários.</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">👥</div>
                     <h3>Direito do Trabalho</h3>
-                    <p>Assessoria completa em questões trabalhistas, defesa de direitos dos trabalhadores e consultoria para empresas.</p>
+                    <p>Defesa integral dos direitos trabalhistas: rescisões, horas extras, adicional de insalubridade, estabilidade, assédio moral e todas as questões relacionadas às relações de trabalho.</p>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">🏛️</div>
                     <h3>Direito Previdenciário</h3>
-                    <p>Especialização em benefícios previdenciários, aposentadorias, pensões e revisões de benefícios junto ao INSS.</p>
+                    <p>Aposentadorias, auxílios, pensões, revisões de benefícios, recursos ao INSS e planejamento previdenciário para garantir o melhor benefício possível.</p>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">📋</div>
-                    <h3>Consultoria Jurídica</h3>
-                    <p>Orientação jurídica personalizada e consultoria preventiva para evitar problemas futuros.</p>
+                    <h3>Consultoria Preventiva</h3>
+                    <p>Orientação jurídica especializada para prevenir problemas trabalhistas e previdenciários, análise de contratos e planejamento de carreira.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Recursos e Revisões</h3>
+                    <p>Recursos administrativos e judiciais, revisões de benefícios negados ou concedidos com valor inferior ao devido, e ações de cobrança.</p>
                 </div>
             </div>
         </div>
@@ -305,42 +823,16 @@
     <section class="team" id="equipe">
         <div class="container">
             <h2 class="section-title">Nossa Equipe</h2>
-            <p class="section-subtitle">Profissionais altamente qualificados e experientes</p>
+            <p class="section-subtitle">Profissionais especializados e comprometidos com a defesa dos seus direitos</p>
             
             <div class="team-grid">
                 <div class="team-card">
                     <div class="team-photo">👨‍💼</div>
                     <div class="team-info">
-                        <h3>Advogado Sócio</h3>
-                        <div class="role">Direito Civil e Previdenciário</div>
-                        <p>Mestre (UNISINOS) e Especialista em Direito Civil (UFRGS). Professor de Direito e Prática Civil, de 2005 a 2016 (UniRitter). Professor Convidado de cursos de Pós-Graduação.</p>
-                    </div>
-                </div>
-                
-                <div class="team-card">
-                    <div class="team-photo">👩‍💼</div>
-                    <div class="team-info">
-                        <h3>Advogada Sócia</h3>
-                        <div class="role">Direitos Humanos</div>
-                        <p>Professora na UFRGS. Doutora em Direito (PUCRS), com Pós-Doutorado em Democracia e Direitos Humanos pelo Human Rights Centre – Ius Gentium Conimbrigae – Coimbra.</p>
-                    </div>
-                </div>
-                
-                <div class="team-card">
-                    <div class="team-photo">👩‍💼</div>
-                    <div class="team-info">
-                        <h3>Advogada Sócia</h3>
-                        <div class="role">Direito do Trabalho</div>
-                        <p>Doutora em Direito (UNISINOS), com Pós-Doutorado em Direito do Trabalho (PUCRS). Professora da PUCRS, das disciplinas de Direito e Processo do Trabalho.</p>
-                    </div>
-                </div>
-                
-                <div class="team-card">
-                    <div class="team-photo">👨‍💼</div>
-                    <div class="team-info">
-                        <h3>Advogado Sócio</h3>
-                        <div class="role">Direito Geral</div>
-                        <p>Formado em Direito pela UFRGS. Especialista em diversas áreas do direito com ampla experiência em advocacia.</p>
+                        <h3>Cecilio Lacerda Martins</h3>
+                        <div class="role">Advogado Sócio Fundador</div>
+                        <div class="oab">OAB/RS 043475</div>
+                        <p>Especialista em Direito Trabalhista e Previdenciário com ampla experiência na defesa dos direitos dos trabalhadores. Atuação focada em casos complexos e na busca pelos melhores resultados para nossos clientes.</p>
                     </div>
                 </div>
             </div>
@@ -350,35 +842,35 @@
     <!-- Articles Section -->
     <section class="articles" id="artigos">
         <div class="container">
-            <h2 class="section-title">Artigos Recentes</h2>
-            <p class="section-subtitle">Fique por dentro das novidades jurídicas</p>
+            <h2 class="section-title">Artigos e Orientações</h2>
+            <p class="section-subtitle">Informações importantes sobre direitos trabalhistas e previdenciários</p>
             
             <div class="articles-grid">
                 <article class="article-card">
-                    <div class="article-icon">📅</div>
-                    <h3>Período de Graça na Previdência</h3>
-                    <p>A pessoa que para de contribuir à Previdência tem direito a um "período de graça", mantendo todos os direitos mesmo sem fazer contribuições...</p>
+                    <div class="article-icon">⏰</div>
+                    <h3>Horas Extras e Banco de Horas</h3>
+                    <p>Entenda seus direitos relacionados ao trabalho extraordinário, compensação de jornada e como calcular corretamente as horas extras devidas...</p>
                     <a href="#" class="read-more">Saiba Mais</a>
                 </article>
                 
                 <article class="article-card">
-                    <div class="article-icon">👤</div>
-                    <h3>Curatela e Proteção Patrimonial</h3>
-                    <p>A curatela é um instituto jurídico fundamental para a preservação dos interesses patrimoniais de uma pessoa impossibilitada de expressar sua vontade...</p>
-                    <a href="#" class="read-more">Saiba Mais</a>
-                </article>
-                
-                <article class="article-card">
-                    <div class="article-icon">💑</div>
-                    <h3>Divórcio Extrajudicial</h3>
-                    <p>O divórcio extrajudicial possui vantagens em relação ao judicial. É mais prático, rápido e reduz desgastes emocionais...</p>
+                    <div class="article-icon">🛡️</div>
+                    <h3>Estabilidade no Emprego</h3>
+                    <p>Conheça as situações que garantem estabilidade no emprego: gestantes, acidentados, membros da CIPA e outros casos previstos em lei...</p>
                     <a href="#" class="read-more">Saiba Mais</a>
                 </article>
                 
                 <article class="article-card">
                     <div class="article-icon">💰</div>
-                    <h3>Descontos Indevidos em Benefícios</h3>
-                    <p>É comum aposentados se depararem com descontos nos benefícios previdenciários em função de empréstimos não contratados...</p>
+                    <h3>Aposentadoria por Tempo de Contribuição</h3>
+                    <p>Saiba como funciona a nova regra de transição e qual a melhor estratégia para conquistar sua aposentadoria com o melhor valor possível...</p>
+                    <a href="#" class="read-more">Saiba Mais</a>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-icon">⚕️</div>
+                    <h3>Auxílio-Doença e Acidente de Trabalho</h3>
+                    <p>Orientações sobre como solicitar benefícios por incapacidade, documentação necessária e recursos em caso de negativa do INSS...</p>
                     <a href="#" class="read-more">Saiba Mais</a>
                 </article>
             </div>
@@ -389,25 +881,31 @@
     <section class="contact" id="contato">
         <div class="container">
             <h2 class="section-title">Entre em Contato</h2>
-            <p class="section-subtitle">Estamos prontos para ajudá-lo</p>
+            <p class="section-subtitle">Estamos prontos para defender seus direitos</p>
             
             <div class="contact-info">
                 <div class="contact-item">
                     <div class="contact-icon">🕒</div>
                     <h3>Horário de Atendimento</h3>
-                    <p>Segunda a sexta-feira<br>08:30 às 12:00 e 13:00 às 17:00</p>
+                    <p>Segunda a sexta-feira<br>08:30 às 12:00 e 13:30 às 17:30</p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h3>Endereço</h3>
+                    <p>Av. Dorival Candido de Luz Oliveira, 7400<br>Sala 205 - Gravataí/RS</p>
                 </div>
                 
                 <div class="contact-item">
                     <div class="contact-icon">📞</div>
                     <h3>Telefone</h3>
-                    <p>(51) 3333-4444</p>
+                    <p>(51) 99999-9999</p>
                 </div>
                 
                 <div class="contact-item">
                     <div class="contact-icon">📧</div>
                     <h3>E-mail</h3>
-                    <p>contato@lgonzattoadvogados.com.br</p>
+                    <p>contato@lacerdamartins.adv.br</p>
                 </div>
             </div>
         </div>
@@ -418,8 +916,9 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <h3>Gonzatto Advogados Associados</h3>
-                    <p>Escritório especializado em Direito Previdenciário e do Trabalho</p>
+                    <h3>Lacerda e Martins Advogados</h3>
+                    <p class="footer-tagline">Trabalhando pelo trabalhador</p>
+                    <p>Escritório especializado em Direito do Trabalho e Previdenciário</p>
                 </div>
                 <div class="footer-links">
                     <h4>Links Úteis</h4>
@@ -430,180 +929,62 @@
                         <li><a href="#contato">Contato</a></li>
                     </ul>
                 </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p>Av. Dorival Candido de Luz Oliveira, 7400</p>
+                    <p>Sala 205 - Gravataí/RS</p>
+                    <p>(51) 99999-9999</p>
+                </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Gonzatto Advogados Associados. Todos os direitos reservados.</p>
-                <p>Este site informa: usamos cookies para personalizar anúncios e melhorar a sua experiência no site.</p>
+                <p>&copy; 2024 Lacerda e Martins Advogados Associados. Todos os direitos reservados.</p>
+                <p>OAB/RS 043475 - Cecilio Lacerda Martins</p>
             </div>
         </div>
     </footer>
 
-    <style>
-        /* Articles Section */
-        .articles {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .article-card {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 4px solid #1e3c72;
-        }
-
-        .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-
-        .article-icon {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .article-card h3 {
-            color: #1e3c72;
-            margin-bottom: 15px;
-            font-size: 1.3rem;
-        }
-
-        .article-card p {
-            color: #666;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .read-more {
-            color: #1e3c72;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .read-more:hover {
-            color: #ffd700;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 80px 0;
-            background: #f8f9fa;
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .contact-item {
-            text-align: center;
-            background: white;
-            padding: 40px 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .contact-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .contact-item h3 {
-            color: #1e3c72;
-            margin-bottom: 15px;
-        }
-
-        .contact-item p {
-            color: #666;
-        }
-
-        /* Footer */
-        .footer {
-            background: #1e3c72;
-            color: white;
-            padding: 50px 0 20px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 30px;
-        }
-
-        .footer h3, .footer h4 {
-            margin-bottom: 20px;
-            color: #ffd700;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #ffd700;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #2a5298;
-            padding-top: 20px;
-            text-align: center;
-        }
-
-        .footer-bottom p {
-            margin-bottom: 10px;
-            opacity: 0.8;
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .services-grid,
-            .team-grid,
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
-
     <script>
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            // Remove active class from all slides and dots
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Add active class to current slide and dot
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Auto-advance carousel
+        setInterval(nextSlide, 5000);
+
+        // Arrow navigation
+        document.querySelector('.carousel-arrow.next').addEventListener('click', nextSlide);
+        document.querySelector('.carousel-arrow.prev').addEventListener('click', prevSlide);
+
+        // Dot navigation
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -622,11 +1003,11 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(30, 60, 114, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
+                header.style.background = 'rgba(26, 26, 26, 0.95)';
+                header.style.backdropFilter = 'blur(15px)';
             } else {
-                header.style.background = 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)';
-                header.style.backdropFilter = 'none';
+                header.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)';
+                header.style.backdropFilter = 'blur(10px)';
             }
         });
 
@@ -646,35 +1027,68 @@
         }, observerOptions);
 
         // Apply animation to cards
-        document.querySelectorAll('.service-card, .team-card, .article-card').forEach(card => {
+        document.querySelectorAll('.service-card, .team-card, .article-card, .contact-item').forEach(card => {
             card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            card.style.transform = 'translateY(40px)';
+            card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             observer.observe(card);
         });
 
-        // Mobile menu toggle (basic implementation)
+        // Mobile menu toggle
         const createMobileMenu = () => {
             const nav = document.querySelector('.nav');
+            const navLinks = document.querySelector('.nav-links');
             const menuButton = document.createElement('button');
+            
             menuButton.innerHTML = '☰';
             menuButton.style.cssText = `
                 background: none;
                 border: none;
                 color: white;
-                font-size: 1.5rem;
+                font-size: 1.8rem;
                 display: none;
                 cursor: pointer;
+                padding: 10px;
             `;
+
+            let isMenuOpen = false;
+
+            menuButton.addEventListener('click', () => {
+                isMenuOpen = !isMenuOpen;
+                if (isMenuOpen) {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '100%';
+                    navLinks.style.left = '0';
+                    navLinks.style.right = '0';
+                    navLinks.style.background = 'rgba(26, 26, 26, 0.95)';
+                    navLinks.style.padding = '20px';
+                    navLinks.style.backdropFilter = 'blur(15px)';
+                    menuButton.innerHTML = '✕';
+                } else {
+                    navLinks.style.display = 'none';
+                    menuButton.innerHTML = '☰';
+                }
+            });
 
             nav.appendChild(menuButton);
 
-            // Show menu button on mobile
+            // Show/hide menu button based on screen size
             const checkMobile = () => {
                 if (window.innerWidth <= 768) {
                     menuButton.style.display = 'block';
+                    navLinks.style.display = 'none';
                 } else {
                     menuButton.style.display = 'none';
+                    navLinks.style.display = 'flex';
+                    navLinks.style.position = 'static';
+                    navLinks.style.flexDirection = 'row';
+                    navLinks.style.background = 'none';
+                    navLinks.style.padding = '0';
+                    navLinks.style.backdropFilter = 'none';
+                    isMenuOpen = false;
+                    menuButton.innerHTML = '☰';
                 }
             };
 
@@ -683,6 +1097,42 @@
         };
 
         createMobileMenu();
+
+        // Parallax effect for carousel - Removido para evitar conflitos
+        // window.addEventListener('scroll', () => {
+        //     const scrolled = window.pageYOffset;
+        //     const carousel = document.querySelector('.carousel-container');
+        //     if (carousel) {
+        //         carousel.style.transform = `translateY(${scrolled * 0.5}px)`;
+        //     }
+        // });
+
+        // Fix para garantir que o carrossel não interfira nas outras seções
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.querySelector('.carousel-container');
+            const services = document.querySelector('.services');
+            
+            if (carousel && services) {
+                // Garantir que o carrossel tenha altura fixa
+                carousel.style.height = '100vh';
+                carousel.style.position = 'relative';
+                carousel.style.zIndex = '1';
+                
+                // Garantir que services tenha posicionamento correto
+                services.style.position = 'relative';
+                services.style.zIndex = '100';
+                services.style.background = 'linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%)';
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
     </script>
 </body>
 </html>
