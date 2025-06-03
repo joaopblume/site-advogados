@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gonzatto Advogados Associados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #ffd700;
+            color: #1e3c72;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-button:hover {
+            background: #ffed4e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #1e3c72;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 60px;
+            color: #666;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #1e3c72;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1e3c72;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .team-info {
+            padding: 30px;
+        }
+
+        .team-info h3 {
+            font-size: 1.3rem;
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        .team-info .role {
+            color: #ffd700;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .team-info p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">Gonzatto Advogados</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#equipe">Equipe</a></li>
+                    <li><a href="#artigos">Artigos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Gonzatto Advogados Associados</h1>
+            <p>Atendimento presencial e virtual, personalizado e com agilidade para clientes de qualquer estado do País.</p>
+            <a href="#contato" class="cta-button">
+                Saiba Mais
+                <span>→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicos">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <p class="section-subtitle">O escritório é especializado no atendimento a pessoas físicas, de forma personalizada, mediante consultas prestadas pelos advogados sócios do escritório, com presteza e facilidade de acesso.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">⚖️</div>
+                    <h3>Planejamento Previdenciário</h3>
+                    <p>Estudo minucioso com a finalidade de verificar a melhor estratégia com relação à aposentadoria e outros eventuais benefícios previdenciários.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">👥</div>
+                    <h3>Direito do Trabalho</h3>
+                    <p>Assessoria completa em questões trabalhistas, defesa de direitos dos trabalhadores e consultoria para empresas.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🏛️</div>
+                    <h3>Direito Previdenciário</h3>
+                    <p>Especialização em benefícios previdenciários, aposentadorias, pensões e revisões de benefícios junto ao INSS.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>Consultoria Jurídica</h3>
+                    <p>Orientação jurídica personalizada e consultoria preventiva para evitar problemas futuros.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="equipe">
+        <div class="container">
+            <h2 class="section-title">Nossa Equipe</h2>
+            <p class="section-subtitle">Profissionais altamente qualificados e experientes</p>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-photo">👨‍💼</div>
+                    <div class="team-info">
+                        <h3>Advogado Sócio</h3>
+                        <div class="role">Direito Civil e Previdenciário</div>
+                        <p>Mestre (UNISINOS) e Especialista em Direito Civil (UFRGS). Professor de Direito e Prática Civil, de 2005 a 2016 (UniRitter). Professor Convidado de cursos de Pós-Graduação.</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-photo">👩‍💼</div>
+                    <div class="team-info">
+                        <h3>Advogada Sócia</h3>
+                        <div class="role">Direitos Humanos</div>
+                        <p>Professora na UFRGS. Doutora em Direito (PUCRS), com Pós-Doutorado em Democracia e Direitos Humanos pelo Human Rights Centre – Ius Gentium Conimbrigae – Coimbra.</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-photo">👩‍💼</div>
+                    <div class="team-info">
+                        <h3>Advogada Sócia</h3>
+                        <div class="role">Direito do Trabalho</div>
+                        <p>Doutora em Direito (UNISINOS), com Pós-Doutorado em Direito do Trabalho (PUCRS). Professora da PUCRS, das disciplinas de Direito e Processo do Trabalho.</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-photo">👨‍💼</div>
+                    <div class="team-info">
+                        <h3>Advogado Sócio</h3>
+                        <div class="role">Direito Geral</div>
+                        <p>Formado em Direito pela UFRGS. Especialista em diversas áreas do direito com ampla experiência em advocacia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="articles" id="artigos">
+        <div class="container">
+            <h2 class="section-title">Artigos Recentes</h2>
+            <p class="section-subtitle">Fique por dentro das novidades jurídicas</p>
+            
+            <div class="articles-grid">
+                <article class="article-card">
+                    <div class="article-icon">📅</div>
+                    <h3>Período de Graça na Previdência</h3>
+                    <p>A pessoa que para de contribuir à Previdência tem direito a um "período de graça", mantendo todos os direitos mesmo sem fazer contribuições...</p>
+                    <a href="#" class="read-more">Saiba Mais</a>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-icon">👤</div>
+                    <h3>Curatela e Proteção Patrimonial</h3>
+                    <p>A curatela é um instituto jurídico fundamental para a preservação dos interesses patrimoniais de uma pessoa impossibilitada de expressar sua vontade...</p>
+                    <a href="#" class="read-more">Saiba Mais</a>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-icon">💑</div>
+                    <h3>Divórcio Extrajudicial</h3>
+                    <p>O divórcio extrajudicial possui vantagens em relação ao judicial. É mais prático, rápido e reduz desgastes emocionais...</p>
+                    <a href="#" class="read-more">Saiba Mais</a>
+                </article>
+                
+                <article class="article-card">
+                    <div class="article-icon">💰</div>
+                    <h3>Descontos Indevidos em Benefícios</h3>
+                    <p>É comum aposentados se depararem com descontos nos benefícios previdenciários em função de empréstimos não contratados...</p>
+                    <a href="#" class="read-more">Saiba Mais</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <p class="section-subtitle">Estamos prontos para ajudá-lo</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">🕒</div>
+                    <h3>Horário de Atendimento</h3>
+                    <p>Segunda a sexta-feira<br>08:30 às 12:00 e 13:00 às 17:00</p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <h3>Telefone</h3>
+                    <p>(51) 3333-4444</p>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <h3>E-mail</h3>
+                    <p>contato@lgonzattoadvogados.com.br</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Gonzatto Advogados Associados</h3>
+                    <p>Escritório especializado em Direito Previdenciário e do Trabalho</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Úteis</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#equipe">Equipe</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Gonzatto Advogados Associados. Todos os direitos reservados.</p>
+                <p>Este site informa: usamos cookies para personalizar anúncios e melhorar a sua experiência no site.</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        /* Articles Section */
+        .articles {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .article-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid #1e3c72;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .article-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .article-card h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .article-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: #1e3c72;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #ffd700;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .contact-item {
+            text-align: center;
+            background: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-item h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+
+        .contact-item p {
+            color: #666;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e3c72;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer h3, .footer h4 {
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffd700;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #2a5298;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .services-grid,
+            .team-grid,
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(30, 60, 114, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #1e3c72 0%, #2a5298 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation to cards
+        document.querySelectorAll('.service-card, .team-card, .article-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Mobile menu toggle (basic implementation)
+        const createMobileMenu = () => {
+            const nav = document.querySelector('.nav');
+            const menuButton = document.createElement('button');
+            menuButton.innerHTML = '☰';
+            menuButton.style.cssText = `
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                display: none;
+                cursor: pointer;
+            `;
+
+            nav.appendChild(menuButton);
+
+            // Show menu button on mobile
+            const checkMobile = () => {
+                if (window.innerWidth <= 768) {
+                    menuButton.style.display = 'block';
+                } else {
+                    menuButton.style.display = 'none';
+                }
+            };
+
+            window.addEventListener('resize', checkMobile);
+            checkMobile();
+        };
+
+        createMobileMenu();
+    </script>
+</body>
+</html>
