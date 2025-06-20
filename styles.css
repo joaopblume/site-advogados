@@ -362,6 +362,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 50px;
     margin-top: 60px;
+    align-items: start; /* Align items to the top */
 }
 
 .team-card {
@@ -371,6 +372,8 @@ body {
     box-shadow: 0 10px 30px rgba(6, 57, 112, 0.1);
     transition: all 0.4s ease;
     border: 1px solid #e9ecef;
+    display: flex;
+    flex-direction: column;
 }
 
 .team-card:hover {
@@ -381,15 +384,18 @@ body {
 
 .team-photo {
     width: 100%;
-    height: 250px;
-    background: linear-gradient(135deg, #063970, #1e88e5);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #f8f9fa;
-    font-size: 4rem;
     position: relative;
     overflow: hidden;
+}
+
+.icon-photo {
+    height: 280px;
+    background: linear-gradient(135deg, #063970, #1e88e5);
+    color: #f8f9fa;
+    font-size: 4rem;
 }
 
 .team-photo::before {
@@ -400,6 +406,17 @@ body {
     right: 0;
     bottom: 0;
     background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
+    z-index: 1;
+}
+
+.team-member-img {
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.team-card:hover .team-member-img {
+    transform: scale(1.02);
 }
 
 .team-info {
@@ -701,4 +718,57 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #1e88e5;
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50px;
+    padding: 12px 24px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+    font-weight: 600;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    animation: pulseWhatsApp 2s infinite;
+}
+
+.whatsapp-button svg {
+    margin-right: 10px;
+}
+
+.whatsapp-button:hover {
+    background-color: #22c15e;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-button:active {
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    .whatsapp-button {
+        bottom: 20px;
+        right: 20px;
+        padding: 10px 20px;
+    }
+}
+
+@keyframes pulseWhatsApp {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
 }
