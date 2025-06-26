@@ -462,7 +462,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 50px;
     margin-top: 60px;
-    align-items: start; /* Align items to the top */
+    align-items: stretch; /* Make all cards same height */
 }
 
 .team-card {
@@ -521,6 +521,9 @@ body {
 
 .team-info {
     padding: 40px;
+    flex: 1; /* Make team-info expand to fill available space */
+    display: flex;
+    flex-direction: column;
 }
 
 .team-info h3 {
