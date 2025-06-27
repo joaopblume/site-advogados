@@ -212,18 +212,18 @@ body {
 }
 
 .cta-button {
-    background: var(--white);
+    background: linear-gradient(135deg, var(--white) 0%, #f8f9fa 100%);
     color: var(--primary);
     padding: 16px 36px;
     text-decoration: none;
-    border-radius: 0;
+    border-radius: 8px;
     font-weight: 600;
     font-size: 0.9rem;
     transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     text-transform: uppercase;
     letter-spacing: 1px;
     border: none;
@@ -238,7 +238,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     z-index: -1;
@@ -364,14 +364,15 @@ body {
 }
 
 .service-card {
-    background: var(--white);
+    background: linear-gradient(135deg, var(--white) 0%, #f8f9fa 100%);
     padding: 50px 40px;
     text-align: center;
     transition: all 0.4s ease;
     border: 1px solid rgba(0, 0, 0, 0.05);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 5px 20px var(--shadow);
+    box-shadow: 0 8px 30px rgba(6, 57, 112, 0.08);
+    border-radius: 12px;
 }
 
 .service-card::before {
@@ -398,8 +399,8 @@ body {
 .service-icon {
     width: 70px;
     height: 70px;
-    background: var(--primary);
-    border-radius: 0;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -407,7 +408,7 @@ body {
     font-size: 2rem;
     color: var(--white);
     position: relative;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(6, 57, 112, 0.2);
 }
 
 .service-icon::before {
@@ -466,10 +467,10 @@ body {
 }
 
 .team-card {
-    background: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(6, 57, 112, 0.1);
+    box-shadow: 0 12px 40px rgba(6, 57, 112, 0.12);
     transition: all 0.4s ease;
     border: 1px solid #e9ecef;
     display: flex;
@@ -567,14 +568,14 @@ body {
 }
 
 .article-card {
-    background: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     padding: 40px;
     border-radius: 20px;
     transition: all 0.4s ease;
     border: 1px solid #e9ecef;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(6, 57, 112, 0.08);
+    box-shadow: 0 8px 25px rgba(6, 57, 112, 0.1);
 }
 
 .article-card::before {
@@ -653,10 +654,10 @@ body {
 
 .contact-item {
     text-align: center;
-    background: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     padding: 50px 30px;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(6, 57, 112, 0.1);
+    box-shadow: 0 12px 35px rgba(6, 57, 112, 0.12);
     border: 1px solid #e9ecef;
     transition: all 0.4s ease;
 }

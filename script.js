@@ -53,19 +53,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Header background change on scroll
+// Header background change on scroll with parallax
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.header');
-    if (window.scrollY > 100) {
-        header.style.background = 'rgba(6, 57, 112, 0.95)';
-        header.style.backdropFilter = 'blur(15px)';
+    const scrollY = window.scrollY;
+    
+    if (scrollY > 100) {
+        header.style.background = 'rgba(6, 57, 112, 0.98)';
+        header.style.backdropFilter = 'blur(20px)';
+        header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
     } else {
         header.style.background = 'rgba(6, 57, 112, 0.95)';
         header.style.backdropFilter = 'blur(10px)';
+        header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
     }
+    
+    // Call parallax effect
+    requestParallax();
 });
 
-// Animate cards on scroll
+// Animate cards on scroll with staggered effect
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -80,13 +87,57 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Apply animation to cards
-document.querySelectorAll('.service-card, .team-card, .article-card, .contact-item').forEach(card => {
+// Apply animation to cards with staggered delays
+document.querySelectorAll('.service-card, .team-card, .article-card, .contact-item').forEach((card, index) => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(40px)';
-    card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    card.style.transition = `opacity 0.8s ease ${index * 0.1}s, transform 0.8s ease ${index * 0.1}s`;
     observer.observe(card);
 });
+
+// Section titles animation
+const titleObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.section-title, .section-subtitle').forEach((title, index) => {
+    title.style.opacity = '0';
+    title.style.transform = 'translateY(30px)';
+    title.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
+    titleObserver.observe(title);
+});
+
+// Parallax effect for carousel
+let ticking = false;
+
+function updateParallax() {
+    const scrolled = window.pageYOffset;
+    const carousel = document.querySelector('.carousel-container');
+    const carouselHeight = carousel.offsetHeight;
+    
+    if (scrolled <= carouselHeight) {
+        const parallaxElements = document.querySelectorAll('.carousel-slide');
+        parallaxElements.forEach(element => {
+            const speed = 0.5;
+            const yPos = -(scrolled * speed);
+            element.style.transform = `translateY(${yPos}px)`;
+        });
+    }
+    
+    ticking = false;
+}
+
+function requestParallax() {
+    if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+    }
+}
 
 // Mobile menu toggle
 const createMobileMenu = () => {
