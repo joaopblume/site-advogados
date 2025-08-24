@@ -365,7 +365,6 @@ body {
 
 .service-card {
     background: linear-gradient(135deg, var(--white) 0%, #f8f9fa 100%);
-    padding: 50px 40px;
     text-align: center;
     transition: all 0.4s ease;
     border: 1px solid rgba(0, 0, 0, 0.05);
@@ -373,6 +372,7 @@ body {
     overflow: hidden;
     box-shadow: 0 8px 30px rgba(6, 57, 112, 0.08);
     border-radius: 12px;
+    padding: 0; /* Removido o padding para o banner da imagem */
 }
 
 .service-card::before {
@@ -396,30 +396,17 @@ body {
     border-color: var(--primary-light);
 }
 
-.service-icon {
-    width: 70px;
-    height: 70px;
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 30px;
-    font-size: 2rem;
-    color: var(--white);
-    position: relative;
-    box-shadow: 0 8px 20px rgba(6, 57, 112, 0.2);
+.service-card-image {
+    height: 200px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 }
 
-.service-icon::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border: 1px solid var(--primary-light);
-    z-index: -1;
+.service-card-content {
+    padding: 40px;
 }
 
 .service-card h3 {
@@ -554,68 +541,62 @@ body {
     line-height: 1.7;
 }
 
-/* Articles Section */
-.articles {
+/* Atuação Nacional Section */
+.atuacao-nacional {
     padding: 100px 0;
-    background: #f8f9fa;
+    background: var(--white); /* Ou use #f8f9fa para alternar a cor de fundo */
 }
 
-.articles-grid {
+.atuacao-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 40px;
-    margin-top: 60px;
+    grid-template-columns: 1fr 1fr; /* Cria duas colunas de tamanho igual */
+    align-items: center; /* Alinha o texto e a imagem verticalmente */
+    gap: 60px; /* Espaçamento entre o texto e a imagem */
+    margin-top: 80px;
 }
 
-.article-card {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    padding: 40px;
-    border-radius: 20px;
-    transition: all 0.4s ease;
-    border: 1px solid #e9ecef;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(6, 57, 112, 0.1);
+.atuacao-texto h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--primary-dark);
+    font-weight: 700;
+    margin-bottom: 15px;
 }
 
-.article-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(6, 57, 112, 0.05), transparent);
-    transition: left 0.6s ease;
-}
-
-.article-card:hover::before {
-    left: 100%;
-}
-
-.article-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(6, 57, 112, 0.12);
-    border-color: #063970;
-}
-
-.article-icon {
-    font-size: 3rem;
+.atuacao-texto .afirmacao {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
     margin-bottom: 25px;
-    color: #063970;
 }
 
-.article-card h3 {
-    color: #2c3e50;
+.atuacao-texto p {
+    color: var(--text-medium);
+    line-height: 1.8;
     margin-bottom: 20px;
-    font-size: 1.4rem;
-    font-weight: 600;
 }
 
-.article-card p {
-    color: #6c757d;
-    margin-bottom: 25px;
-    line-height: 1.7;
+.atuacao-mapa img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove espaços extras abaixo da imagem */
+}
+
+/* Deixa a seção responsiva para telas menores */
+@media (max-width: 992px) {
+    .atuacao-grid {
+        grid-template-columns: 1fr; /* Coloca o mapa embaixo do texto */
+        text-align: center;
+    }
+
+    .atuacao-mapa {
+        margin-top: 50px; /* Adiciona um espaço quando o layout muda */
+    }
+
+    .atuacao-texto h3 {
+        font-size: 1.8rem;
+    }
 }
 
 .read-more {
@@ -669,9 +650,32 @@ body {
 }
 
 .contact-icon {
-    font-size: 3.5rem;
-    margin-bottom: 25px;
-    color: #063970;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+/* Estilos específicos para o mapa responsivo */
+.contact-item.map-item .contact-icon {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 75%; /* Proporção 4:3 */
+    margin-bottom: 30px; /* Mantém o espaçamento consistente */
+    min-width: 0; /* Corrige bug de overflow em layouts de grid */
+    border-radius: 12px; /* Arredonda os cantos do mapa */
+}
+
+.contact-item.map-item .contact-icon iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0; /* Garante que não há borda */
 }
 
 .contact-item h3 {
@@ -914,4 +918,23 @@ html {
     100% {
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
     }
+}
+
+/* Mapa Responsivo no Footer */
+.footer-map-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 75%; /* Proporção 4:3 */
+    margin-top: 20px; /* Espaçamento acima do mapa */
+    border-radius: 8px; /* Bordas arredondadas */
+}
+
+.footer-map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
