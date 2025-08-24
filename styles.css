@@ -938,3 +938,9 @@ html {
     height: 100%;
     border: 0;
 }
+
+/* Alinhamento da lista de emails */
+.email-list {
+    text-align: left;
+    display: inline-block;
+}
