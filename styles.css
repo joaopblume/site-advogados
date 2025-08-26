@@ -467,6 +467,7 @@ body {
     color: #495057;
     font-size: 0.95rem;
     line-height: 1.7;
+    text-align: justify;
 }
 
 /* Atuação Nacional Section */
@@ -715,6 +716,31 @@ body {
     color: var(--white);
     font-size: 0.85rem;
     letter-spacing: 0.5px;
+}
+
+.footer-social {
+    margin-bottom: 20px;
+}
+
+.footer-social a, .footer-social a span {
+    color: var(--white) !important;
+    text-decoration: none;
+}
+
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover, .footer-social a:hover span {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.footer-social svg {
+    width: 24px;
+    height: 24px;
 }
 
 /* Mobile Responsiveness */
