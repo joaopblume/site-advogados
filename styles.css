@@ -99,7 +99,8 @@ body {
     width: 100%;
 }
 
-/* Carousel Section */
+
+/* Hero Section */
 .carousel-container {
     position: relative;
     height: 100vh;
@@ -115,21 +116,12 @@ body {
 }
 
 .carousel-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
-
-.carousel-slide.active {
-    opacity: 1;
 }
 
 .carousel-slide::before {
@@ -146,19 +138,9 @@ body {
     z-index: 1;
 }
 
-/* Definindo as imagens do carrossel com fallback */
+/* Definindo a imagem do hero */
 .carousel-slide:nth-child(1) {
     background-image: url('images/carrossel/carrossel1.jpg');
-    background-color: #f8f9fa;
-}
-
-.carousel-slide:nth-child(2) {
-    background-image: url('images/carrossel/carrossel2.jpg');
-    background-color: #f8f9fa;
-}
-
-.carousel-slide:nth-child(3) {
-    background-image: url('images/carrossel/carrossel3.jpg');
     background-color: #f8f9fa;
 }
 
@@ -252,60 +234,6 @@ body {
 
 .cta-button:hover::before {
     transform: translateX(0);
-}
-
-/* Carousel Navigation */
-.carousel-nav {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 15px;
-    z-index: 20;
-}
-
-.carousel-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(6, 57, 112, 0.4);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.carousel-dot.active {
-    background: #063970;
-    transform: scale(1.3);
-}
-
-.carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(6, 57, 112, 0.7);
-    color: #f8f9fa;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2rem;
-    z-index: 20;
-    transition: all 0.3s ease;
-}
-
-.carousel-arrow:hover {
-    background: rgba(6, 57, 112, 0.9);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-arrow.prev {
-    left: 30px;
-}
-
-.carousel-arrow.next {
-    right: 30px;
 }
 
 /* Services Section */
@@ -827,10 +755,6 @@ body {
 
     .section-title {
         font-size: 2.2rem;
-    }
-
-    .carousel-arrow {
-        display: none;
     }
 
     .service-card,

@@ -1,44 +1,3 @@
-// Carousel functionality
-let currentSlide = 0;
-const slides = document.querySelectorAll('.carousel-slide');
-const dots = document.querySelectorAll('.carousel-dot');
-const totalSlides = slides.length;
-
-function showSlide(index) {
-    // Remove active class from all slides and dots
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-    
-    // Add active class to current slide and dot
-    slides[index].classList.add('active');
-    dots[index].classList.add('active');
-}
-
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    showSlide(currentSlide);
-}
-
-function prevSlide() {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    showSlide(currentSlide);
-}
-
-// Auto-advance carousel
-setInterval(nextSlide, 5000);
-
-// Arrow navigation
-document.querySelector('.carousel-arrow.next').addEventListener('click', nextSlide);
-document.querySelector('.carousel-arrow.prev').addEventListener('click', prevSlide);
-
-// Dot navigation
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        currentSlide = index;
-        showSlide(currentSlide);
-    });
-});
-
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -53,7 +12,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Header background change on scroll with parallax
+// Header background change on scroll
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.header');
     const scrollY = window.scrollY;
@@ -67,9 +26,6 @@ window.addEventListener('scroll', () => {
         header.style.backdropFilter = 'blur(10px)';
         header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
     }
-    
-    // Call parallax effect
-    requestParallax();
 });
 
 // Animate cards on scroll with staggered effect
@@ -111,33 +67,6 @@ document.querySelectorAll('.section-title, .section-subtitle').forEach((title, i
     title.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
     titleObserver.observe(title);
 });
-
-// Parallax effect for carousel
-let ticking = false;
-
-function updateParallax() {
-    const scrolled = window.pageYOffset;
-    const carousel = document.querySelector('.carousel-container');
-    const carouselHeight = carousel.offsetHeight;
-    
-    if (scrolled <= carouselHeight) {
-        const parallaxElements = document.querySelectorAll('.carousel-slide');
-        parallaxElements.forEach(element => {
-            const speed = 0.5;
-            const yPos = -(scrolled * speed);
-            element.style.transform = `translateY(${yPos}px)`;
-        });
-    }
-    
-    ticking = false;
-}
-
-function requestParallax() {
-    if (!ticking) {
-        requestAnimationFrame(updateParallax);
-        ticking = true;
-    }
-}
 
 // Mobile menu toggle
 const createMobileMenu = () => {
@@ -202,24 +131,6 @@ const createMobileMenu = () => {
 };
 
 createMobileMenu();
-
-// Fix para garantir que o carrossel não interfira nas outras seções
-document.addEventListener('DOMContentLoaded', () => {
-    const carousel = document.querySelector('.carousel-container');
-    const services = document.querySelector('.services');
-    
-    if (carousel && services) {
-        // Garantir que o carrossel tenha altura fixa
-        carousel.style.height = '100vh';
-        carousel.style.position = 'relative';
-        carousel.style.zIndex = '1';
-        
-        // Garantir que services tenha posicionamento correto
-        services.style.position = 'relative';
-        services.style.zIndex = '100';
-        services.style.background = '#ffffff';
-    }
-});
 
 // Add loading animation
 window.addEventListener('load', () => {
